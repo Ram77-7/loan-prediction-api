@@ -1,5 +1,5 @@
 import joblib
-from keras.models import load_model
+from tensorflow.keras.models import load_model
 import numpy as np
 from sklearn.decomposition import PCA
 
@@ -11,8 +11,10 @@ le_property_area = joblib.load('app/models/le_property_area (1).pkl')
 
 pca_transformer = joblib.load('app/models/pca (2).pkl')
 
-Load_model = load_model('app/models/model.keras')
+Load_model = load_model('app/models/model.h5')
 
 print(pca_transformer.n_features_in_)   # number of input features PCA expects
 print(pca_transformer.components_)      # PCA components (weights)
 print(pca_transformer.explained_variance_) 
+import tensorflow as tf
+print(tf.__version__)
