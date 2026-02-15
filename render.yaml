@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: ann-loan-api
+    env: docker
+    region: singapore
+    plan: free
+    branch: main
+    dockerfilePath: ./Dockerfile
+    autoDeploy: true
+    healthCheckPath: /docs
+
+databases:
+  - name: ann-loan-db
+    plan: free
