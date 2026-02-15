@@ -16,24 +16,12 @@ app = FastAPI(
     description="By using inputs predicts whether loan is approved or not"
 )
 
-# 🌍 Enable frontend connection
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["*"],
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
-
-# 🎨 Templates folder
-templates = Jinja2Templates(directory="templates")
+Base.metadata.create_all(bind=engine)
 
 
-# 🏠 Home Route → Loads index.html
-@app.get("/", response_class=HTMLResponse)
-def home(request: Request):
-    return templates.TemplateResponse("index.html", {"request": request})
-
+@app.get("/")
+def read_root():
+    return {"message": "Welcome to the Diabetes Prediction API"}
 
 # 🔮 Prediction Route
 @app.post("/predict")
